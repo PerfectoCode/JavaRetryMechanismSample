@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="5">
+    <packages>
+        <package name="com.perfecto.sample.todomvc.sanity.*"/>
+    </packages>
+    <!--<test name="Test Windows 81">-->
+        <!--<parameter name="platformName" value="Windows" />-->
+        <!--<parameter name="platformVersion" value="8.1" />-->
+        <!--<parameter name="browserName" value="Chrome" />-->
+        <!--<parameter name="browserVersion" value="55" />-->
+        <!--<parameter name="screenResolution" value="1280x1024" />-->
+        <!--<classes>-->
+            <!--<class name="com.perfecto.sample.google.PerfectoWebScenarioAspectJ" />-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="Test iPhone6 Plus">-->
+        <!--<parameter name="platformName" value="iOS" />-->
+        <!--<parameter name="platformVersion" value="" />-->
+        <!--<parameter name="browserName" value="mobileOS" />-->
+        <!--<parameter name="browserVersion" value="" />-->
+        <!--<parameter name="screenResolution" value="" />-->
+        <!--<classes>-->
+            <!--<class name="com.perfecto.sample.google.PerfectoWebScenarioAspectJ" />-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test name="Test Aspect">
+        <parameter name="platformName" value="Android" />
+        <parameter name="platformVersion" value="" />
+        <parameter name="browserName" value="mobileOS" />
+        <parameter name="browserVersion" value="" />
+        <parameter name="deviceName" value="2DD61D48" />
+        <classes>
+            <class name="PerfectoWebScenarioAspectJ" />
+        </classes>
+    </test>
+</suite>
