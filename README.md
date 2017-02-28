@@ -1,6 +1,6 @@
-## Java Retry Mechanism
+## Retry Mechanism for Java
 
-The following sample shows how to retry obtain a device or web vm from Perfecto mobile cloud.<br/>
+The following Java sample shows how to retry obtain a device or web vm from Perfecto mobile cloud.<br/>
 Common reasons for retry obtain a device: The device is busy, connection failure, no available license, etc... 
 
 ### Quick start: 
