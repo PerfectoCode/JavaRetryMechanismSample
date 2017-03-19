@@ -18,16 +18,16 @@ public class RemoteWebDriverAspect {
     public Object remoteWebDriverAspect(ProceedingJoinPoint point) throws Throwable {
 
         //Code to run before creating the driver
-        long start = System.currentTimeMillis() / 1000;
-        System.out.println("\n[" + System.currentTimeMillis() + "] Trying to create a Remote Web Driver");
+        long startTime = System.currentTimeMillis();
+        System.out.println("\n[" + elapsedTime(startTime) + "] Trying to create a Remote Web Driver");
         Object driver = null;
         int numOfRetries = 0;
         while (driver == null & numOfRetries < Constants.MaxTimesToRetry) {
             try {
-                System.out.println("[" + System.currentTimeMillis() + "] Try number : " + numOfRetries);
+                System.out.println("[" + elapsedTime(startTime) + "] Try number : " + numOfRetries);
                 driver = point.proceed();
             } catch (Throwable throwable) {
-                System.out.println("[" + System.currentTimeMillis() + "] Device allocation failed");
+                System.out.println("[" + elapsedTime(startTime) + "] Device allocation failed");
                 String message = throwable.getMessage();
                 System.out.println(message);
                 numOfRetries++;
@@ -37,17 +37,19 @@ public class RemoteWebDriverAspect {
 
         if (driver != null) {
             //Code to run after successfully creating a driver
-            System.out.println("[" + System.currentTimeMillis() / 1000 + "] Remote Web Driver initialized successfully");
+            System.out.println("[" + elapsedTime(startTime) + "] Remote Web Driver initialized successfully");
         }
 
         else {
             //Code to run when used up retries with no success
-            System.out.println("[" + System.currentTimeMillis() + "] Failed to initialize a Remote Web Driver");
+            System.out.println("[" + elapsedTime(startTime) + "] Failed to initialize a Remote Web Driver");
             //Throw exception?
         }
 
         return driver;
     }
 
-
+    private long elapsedTime(long startTime){
+        return (System.currentTimeMillis() - startTime) / 1000;
+    }
 }
